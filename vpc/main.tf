@@ -7,8 +7,12 @@ variable "instance_region" {
   default = "lon1"
 }
 
-resource "digitalocean_vpc" "example" {
+resource "digitalocean_vpc" "main" {
   name     = "${var.env}-vpc"
   region   = var.instance_region
   ip_range = "10.10.10.0/24"
+}
+
+output "vpc_id" {
+  value = digitalocean_vpc.main.id
 }
