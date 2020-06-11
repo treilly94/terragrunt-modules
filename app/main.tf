@@ -14,7 +14,7 @@ variable "instance_region" {
 
 resource "digitalocean_droplet" "app" {
   image  = "ubuntu-18-04-x64"
-  name   = "${env}-app"
+  name   = "${var.env}-app"
   region = var.instance_region
   size   = var.instance_size
 }
