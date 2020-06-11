@@ -2,6 +2,10 @@ variable "env" {
   description = "What is the name of this environment"
 }
 
+variable "vpc_uuid" {
+  description = "The uuid of the vpc for this environment"
+}
+
 variable "instance_size" {
   description = "What kind of servers to run (e.g. s-1vcpu-1gb)"
   default = "s-1vcpu-1gb"
@@ -17,4 +21,5 @@ resource "digitalocean_droplet" "app" {
   name   = "${var.env}-app"
   region = var.instance_region
   size   = var.instance_size
+  vpc_uuid = var.vpc_uuid
 }
